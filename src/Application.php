@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App;
 
+// final berarti class tidak bisa diwariskan
 final class Application {
     public function run(): void {
-        echo "App running yeay!";
+        $router = new Router();
+
+        $router->dispatch();
     }
 }
