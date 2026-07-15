@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace App;
 
-use Closure;
-
 final class Router {
     private array $routes = [];
 
     // tugasnya hanya simpan route ini kedalam $routes
-    public function get(string $uri, Closure $handler) {
+    // callable tipe yang paling luas bisa berupa function biasa, Closure, object method, dan static method
+    public function get(string $uri, callable $handler) {
         $this->routes["GET"][$uri] = $handler;
     }
 
@@ -28,6 +27,7 @@ final class Router {
             exit;
         }
 
-        $handler();
+        // cara memanggil callable
+        call_user_func($handler);
     }
 }
