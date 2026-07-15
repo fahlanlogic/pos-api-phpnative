@@ -5,21 +5,22 @@ declare(strict_types=1);
 namespace App;
 
 use App\Controllers\ProductController;
+use App\Services\ProductService;
 
 // final berarti class tidak bisa diwariskan
 final class Application {
     public function run(): void {
         $router = new Router();
-
-        $product_controller = new ProductController();
+        $PRODUCT_SERVICE = new ProductService();
+        $PRODUCT_CONTROLLER = new ProductController($PRODUCT_SERVICE);
 
         $router->get(
             '/api/products',
-            [$product_controller, 'index']
+            [$PRODUCT_CONTROLLER, 'index']
         );
         $router->post(
             '/api/products',
-            [$product_controller, 'store']
+            [$PRODUCT_CONTROLLER, 'store']
         );
 
 
