@@ -17,6 +17,10 @@ final class Application {
             '/api/products',
             [$product_controller, 'index']
         );
+        $router->post(
+            '/api/products',
+            [$product_controller, 'store']
+        );
 
 
         $router->dispatch();

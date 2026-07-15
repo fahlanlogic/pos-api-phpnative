@@ -13,6 +13,10 @@ final class Router {
         $this->routes["GET"][$uri] = $handler;
     }
 
+    public function post(string $uri, callable $handler) {
+        $this->routes["POST"][$uri] = $handler;
+    }
+
     // mencari dan menjalankan route
     public function dispatch(): void {
         $method = $_SERVER["REQUEST_METHOD"];   // untuk ambil method
@@ -27,7 +31,6 @@ final class Router {
             exit;
         }
 
-        // cara memanggil callable
-        call_user_func($handler);
+        $handler();
     }
 }
