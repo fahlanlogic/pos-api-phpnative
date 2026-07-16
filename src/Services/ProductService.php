@@ -21,12 +21,7 @@ class ProductService {
             ],
         ];
     }
-    public function create() {
-        return [
-            "id" => 1,
-            "title" => "Mackbook Air M1",
-            "stock" => 20,
-            "price" => 13000000
-        ];
+    public function create(array $body): array {
+        return $body;
     }
 }

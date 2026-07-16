@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Http;
 
 final class Response {
     public static function json(array $data, int $statusCode = 200): void {
