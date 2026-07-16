@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\DTOs\CreateProductDto;
+
 class ProductService {
     public function getAll(): array {
         return [
@@ -21,7 +23,12 @@ class ProductService {
             ],
         ];
     }
-    public function create(array $body): array {
-        return $body;
+    public function create(CreateProductDto $dto): array {
+        return [
+            'id' => $dto->id,
+            'title' => $dto->title,
+            'stock' => $dto->stock,
+            'price' => $dto->price,
+        ];
     }
 }
