@@ -22,7 +22,6 @@ final class Application {
             [$PRODUCT_CONTROLLER, 'store']
         );
 
-
         $router->dispatch();
     }
 }

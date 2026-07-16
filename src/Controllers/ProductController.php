@@ -11,10 +11,20 @@ class ProductController {
     }
 
     public function index(): void {
-        $this->product_service->getAll();
+        $products = $this->product_service->getAll();
+
+        echo json_encode([
+            "message" => "Data fetched",
+            "data" => $products
+        ]);
     }
 
     public function store(): void {
-        $this->product_service->create();
+        $product = $this->product_service->create();
+
+        echo json_encode([
+            "message" => "Operation success",
+            "data" => $product
+        ]);
     }
 }
