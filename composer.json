@@ -11,5 +11,7 @@
       "email": "alanfahdi@gmail.com"
     }
   ],
-  "require": {}
+  "require": {
+    "symfony/validator": "^8.1"
+  }
 }

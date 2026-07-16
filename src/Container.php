@@ -6,6 +6,8 @@ namespace App;
 
 use ReflectionClass;
 use RuntimeException;
+use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
     - Apakah class ini punya constructor?    
@@ -15,6 +17,10 @@ use RuntimeException;
  */
 final class Container {
     public function get(string $className) {
+        if ($className === ValidatorInterface::class) {
+            return Validation::createValidator();
+        }
+
         // ReflectionClass memecah class dari param seperti pada detail pertanyaan di atas
         $reflection = new ReflectionClass($className);
         $contructor = $reflection->getConstructor();        // mengambil contructor dari reflection, output ReflectionMethod|null

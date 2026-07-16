@@ -8,9 +8,10 @@ use App\DTOs\CreateProductDto;
 use App\Http\Request;
 use App\Http\Response;
 use App\Services\ProductService;
+use App\Validation\ValidationService;
 
 class ProductController {
-    public function __construct(private ProductService $product_service, private Request $req) {
+    public function __construct(private ProductService $product_service, private Request $req, private ValidationService $validation_service) {
     }
 
     public function index(): void {
@@ -27,6 +28,7 @@ class ProductController {
             stock: $body['stock'],
             price: $body['price'],
         );
+        // $this->validation_service->validate($dto);
         $product = $this->product_service->create($dto);
 
         Response::json($product);
