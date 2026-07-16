@@ -10,8 +10,8 @@ use App\Controllers\ProductController;
 final class Application {
     public function run(): void {
         $router = new Router();
-        $CONTAINER = new Container();
-        $PRODUCT_CONTROLLER = $CONTAINER->get(ProductController::class);
+        $CONTAINER = new Container();                                       // sama dengan DI (dependency injection)
+        $PRODUCT_CONTROLLER = $CONTAINER->get(ProductController::class);    // otomatis inject ProductService via Container
 
         $router->get(
             '/api/products',
